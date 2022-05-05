@@ -39,6 +39,7 @@ social1 <- ggplot(obs_social, aes(x = Day, y = Observations)) +
 	scale_color_brewer(palette = "Dark2") +
 	annotate (geom = "rect", xmin =7, ymin = -Inf, xmax = 14, ymax = Inf, alpha =0.2, fill = "gray") + 
 	annotate (geom = "rect", xmin =21, ymin = -Inf, xmax = 28, ymax = Inf, alpha =0.2, fill = "gray") + 
+	ylab("Social behavior") +
     facet_grid (.~Year) +
     theme_bw() +
     theme(panel.grid.minor = element_blank(), panel.grid.major.y = element_blank(), panel.grid.major.x = element_line(linetype = "dotted", color = "black"))
@@ -50,6 +51,7 @@ auto1 <- ggplot(obs_auto, aes(x = Day, y = Observations)) +
 	scale_color_brewer(palette = "Dark2") +
 	annotate (geom = "rect", xmin =7, ymin = -Inf, xmax = 14, ymax = Inf, alpha =0.2, fill = "gray") + 
 	annotate (geom = "rect", xmin =21, ymin = -Inf, xmax = 28, ymax = Inf, alpha =0.2, fill = "gray") + 
+	ylab("Autobehavior") +
     facet_grid (.~Year) +
     theme_bw() +
     theme(panel.grid.minor = element_blank(), panel.grid.major.y = element_blank(), panel.grid.major.x = element_line(linetype = "dotted", color = "black"))
@@ -61,6 +63,7 @@ explor1 <- ggplot(obs_explor, aes(x = Day, y = Observations)) +
 	scale_color_brewer(palette = "Dark2") +
 	annotate (geom = "rect", xmin =7, ymin = -Inf, xmax = 14, ymax = Inf, alpha =0.2, fill = "gray") + 
 	annotate (geom = "rect", xmin =21, ymin = -Inf, xmax = 28, ymax = Inf, alpha =0.2, fill = "gray") + 
+	ylab("Exploration") +
     facet_grid (.~Year) +
     theme_bw() +
     theme(panel.grid.minor = element_blank(), panel.grid.major.y = element_blank(), panel.grid.major.x = element_line(linetype = "dotted", color = "black"))    
