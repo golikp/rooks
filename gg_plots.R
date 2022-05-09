@@ -71,6 +71,50 @@ explo1 <- ggplot(obs_explor, aes(x = Day, y = Observations)) +
 figure1 <- ggarrange(social1, auto1, explo1, labels = c("A", "B","C"), ncol =1, nrow =3)
 ggsave("lines.pdf", width = 20, height = 27)  
 
+#Line graphs by day vertical
+
+themeline <- theme(panel.grid.minor = element_blank(), panel.grid.major.y = element_blank(), panel.grid.major.x = element_line(linetype = "dotted", color = "black"), legend.position = c(0.16, 0.96))
+social1v <- ggplot(obs_social, aes(x = Day, y = Observations)) + 
+    scale_x_continuous(breaks = seq(0,34, by = 7), expand = c(0, 0)) + scale_y_continuous(n.breaks = 10, expand = expansion(mult = c(0, .1))) +
+	geom_line(aes(linetype = Behavior, color = Behavior)) +
+	geom_point(aes(shape = Behavior, color = Behavior)) +
+	scale_color_brewer(palette = "Dark2") +
+	annotate (geom = "rect", xmin =7, ymin = -Inf, xmax = 14, ymax = Inf, alpha =0.2, fill = "gray") + 
+	annotate (geom = "rect", xmin =21, ymin = -Inf, xmax = 28, ymax = Inf, alpha =0.2, fill = "gray") + 
+	ylab("Social behavior") +
+    facet_wrap (.~Year, ncol=1) +
+    theme_bw() +
+    themeline
+
+auto1v <- ggplot(obs_auto, aes(x = Day, y = Observations)) + 
+    scale_x_continuous(breaks = seq(0,34, by = 7), expand = c(0, 0)) + scale_y_continuous(n.breaks = 10, expand = expansion(mult = c(0, .1))) +
+	geom_line(aes(linetype = Behavior, color = Behavior)) +
+	geom_point(aes(shape = Behavior, color = Behavior)) +
+	scale_color_brewer(palette = "Dark2") +
+	annotate (geom = "rect", xmin =7, ymin = -Inf, xmax = 14, ymax = Inf, alpha =0.2, fill = "gray") + 
+	annotate (geom = "rect", xmin =21, ymin = -Inf, xmax = 28, ymax = Inf, alpha =0.2, fill = "gray") + 
+	ylab("Autobehavior") +
+    facet_wrap (.~Year, ncol=1) +
+    theme_bw() +
+    themeline
+    
+explo1v <- ggplot(obs_explor, aes(x = Day, y = Observations)) + 
+    scale_x_continuous(breaks = seq(0,34, by = 7), expand = c(0, 0)) + scale_y_continuous(n.breaks = 10, expand = expansion(mult = c(0, .1))) +
+	geom_line(aes(linetype = Behavior, color = Behavior)) +
+	geom_point(aes(shape = Behavior, color = Behavior)) +
+	scale_color_brewer(palette = "Dark2") +
+	annotate (geom = "rect", xmin =7, ymin = -Inf, xmax = 14, ymax = Inf, alpha =0.2, fill = "gray") + 
+	annotate (geom = "rect", xmin =21, ymin = -Inf, xmax = 28, ymax = Inf, alpha =0.2, fill = "gray") + 
+	ylab("Exploration") +
+    facet_wrap (.~Year, ncol=1) +
+    theme_bw() +
+    themeline
+    
+figure1v <- ggarrange(social1v, auto1v, explo1v, labels = c("A", "B","C"), ncol =3, nrow =1)
+ggsave("lines_v.pdf", width = 20, height = 15)  
+
+
+
 #Points
 show_tests = list(c(1,2), c(2,3), c(3,4), c(4,5))
 social_p1 <- ggplot(obs, aes(group = Week, x = Week, y = `Getting nearer`, fill = Music)) + 
